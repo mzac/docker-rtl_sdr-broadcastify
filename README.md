@@ -26,7 +26,17 @@ This container was based on the instructions from Broadcastify/Radioreference:
 # Installation
 You should have first installed a Linux OS on a dedicated computer or SBC (Raspberry Pi)
 
-Once your OS is up and running, we need to make some changes for the RTL SDR to work properly.
+First, install docker:
+```
+curl -sSL https://get.docker.com | sh
+```
+
+Once docker is installed, verify that it is working:
+```
+docker info
+```
+
+Once your OS and docker is up and running, we need to make some changes for the RTL SDR to work properly.
 
 ```
 sudo echo "blacklist r820t" >> /etc/modprobe.d/dvb-blacklist.conf
@@ -46,3 +56,39 @@ Now you'll want to edit the two files:
 - ezstream_bcfy.xml / Edit the URL, mount and password
 - run.sh / Edit the frequency and any other settings you'd like
 
+Now we are ready to build the container.  This may take a while:
+```
+docker build -t "docker-rtl_sdr-broadcastify:latest" .
+```
+
+If the container builds with no errors, you can now test to make sure it works:
+```
+docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb docker-rtl_sdr-broadcastify:latest /opt/broadcastify/run.sh
+```
+
+You should get an output like this:
+```
+Found 1 device(s):
+  0:  Realtek, RTL2838UHIDIR, SN: 00000001
+
+Using device 0: Generic RTL2832U OEM
+Found Rafael Micro R820T tuner
+ezstream: Connected to http://audio#.broadcastify.com:80/your_mount
+ezstream: Streaming from standard input
+Tuner gain set to 49.60 dB.
+Tuner error set to 69 ppm.
+Tuned to 412000000 Hz.
+Oversampling input by: 84x.
+Oversampling output by: 1x.
+Buffer size: 8.13ms
+Exact sample rate is: 1008000.009613 Hz
+Sampling at 1008000 S/s.
+Output at 12000 Hz.
+
+```
+
+If all looks good, do a CTRL-C and start up the real container and check the logs:
+```
+docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb --restart always --name broadcastify docker-rtl_sdr-broadcastify:latest
+docker logs -f broadcastify
+```
