@@ -42,3 +42,7 @@ cd /opt
 git clone https://github.com/mzac/docker-rtl_sdr-broadcastify.git
 cd /opt/docker-rtl_sdr-broadcastify
 ```
+Now you'll want to edit the two files:
+- ezstream_bcfy.xml / Edit the URL, mount and password
+- run.sh / Edit the frequency and any other settings you'd like
+
