@@ -9,3 +9,10 @@ yourself since it includes the built in config files.  Optionally, you could mou
 # Reference
 This container was based on the instructions from Broadcastify/Radioreference:
 - https://wiki.radioreference.com/index.php/Raspberry_Pi_RTL-SDR_Broadcastify
+
+# Todo
+- [ ] Create docker-compose.yml
+- [ ] Update run.sh with more variables (instead of hard coded)
+- [ ] Allow passing more arguments from the CLI
+
+# Installation
