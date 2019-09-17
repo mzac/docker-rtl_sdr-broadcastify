@@ -1,0 +1,14 @@
+<ezstream>
+    <url>http://audio#.broadcastify.com:80/your_mount</url>
+    <sourcepassword>your_source_password</sourcepassword>
+    <format>MP3</format>
+    <filename>stdin</filename>
+    <svrinfoname>Stream Name</svrinfoname>
+    <svrinfourl>http://www.broadcastify.com</svrinfourl>
+    <svrinfogenre>Scanner</svrinfogenre>
+    <svrinfodescription></svrinfodescription>
+    <svrinfobitrate>16</svrinfobitrate>
+    <svrinfochannels>1</svrinfochannels>
+    <svrinfosamplerate>22050</svrinfosamplerate>
+    <svrinfopublic>0</svrinfopublic>
+</ezstream>
