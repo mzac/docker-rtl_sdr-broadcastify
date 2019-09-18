@@ -15,9 +15,7 @@ RUN mkdir -p /opt/rtl-sdr
 RUN mkdir -p /etc/modprobe.d
 RUN echo 'blacklist dvb_usb_rtl28xxu' > /etc/modprobe.d/raspi-blacklist.conf
 
-# If you want the -E pad then use the keenerd repo if not use osmocom
-#RUN git clone https://github.com/keenerd/rtl-sdr /opt/rtl-sdr
-RUN git clone git://git.osmocom.org/rtl-sdr.git /opt/rtl-sdr
+RUN git clone https://github.com/keenerd/rtl-sdr /opt/rtl-sdr
 
 RUN mkdir -p /opt/rtl-sdr/build
 
