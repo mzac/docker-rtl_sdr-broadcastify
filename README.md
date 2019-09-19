@@ -31,6 +31,11 @@ First, install docker:
 curl -sSL https://get.docker.com | sh
 ```
 
+If you want a regular user to be able to use Docker such as on a Raspberry Pi:
+```
+sudo usermod -aG docker pi
+```
+
 Once docker is installed, verify that it is working:
 ```
 docker info
